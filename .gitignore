@@ -1,0 +1,10 @@
+# .gitignore
+node_modules/
+.next/
+.env
+*.log
+*.sqlite
+dist/
+build/
+coverage/
+.vercel
