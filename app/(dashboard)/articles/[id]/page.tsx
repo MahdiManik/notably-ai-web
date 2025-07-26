@@ -209,7 +209,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
               <div className="flex items-start space-x-3 mb-6">
                 <Tag className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div className="flex flex-wrap gap-2">
-                  {article.tags.map(tag => (
+                  {article.tags.map((tag) => (
                     <span
                       key={tag}
                       className="inline-block px-4 py-2 text-sm font-medium bg-blue-100 text-blue-800 rounded-full border border-blue-200 hover:bg-blue-200 transition-colors cursor-default"
@@ -230,10 +230,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
               <Edit className="h-4 w-4 mr-2" />
               Edit
             </Button>
-            <Button
-              variant="danger"
-              onClick={() => setIsDeleteModalOpen(true)}
-            >
+            <Button variant="danger" onClick={() => setIsDeleteModalOpen(true)}>
               <Trash2 className="h-4 w-4 mr-2" />
               Delete
             </Button>
@@ -257,10 +254,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
             <p className="text-gray-600 mb-4">
               No summary available for this article yet.
             </p>
-            <Button
-              onClick={handleSummarizeArticle}
-              loading={summarizing}
-            >
+            <Button onClick={handleSummarizeArticle} loading={summarizing}>
               <Sparkles className="h-4 w-4 mr-2" />
               Generate Summary
             </Button>

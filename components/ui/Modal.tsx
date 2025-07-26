@@ -11,7 +11,13 @@ interface ModalProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
-export function Modal({ isOpen, onClose, title, children, maxWidth = 'md' }: ModalProps) {
+export function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+  maxWidth = 'md',
+}: ModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -40,10 +46,13 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = 'md' }: Mod
             >
               <Dialog.Panel
                 className={`w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ${
-                  maxWidth === 'sm' ? 'max-w-sm' :
-                  maxWidth === 'md' ? 'max-w-md' :
-                  maxWidth === 'lg' ? 'max-w-lg' :
-                  'max-w-xl'
+                  maxWidth === 'sm'
+                    ? 'max-w-sm'
+                    : maxWidth === 'md'
+                      ? 'max-w-md'
+                      : maxWidth === 'lg'
+                        ? 'max-w-lg'
+                        : 'max-w-xl'
                 }`}
               >
                 {title && (

@@ -12,7 +12,7 @@ const customJestConfig = {
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   },
   collectCoverageFrom: [
     'app/**/*.{js,jsx,ts,tsx}',

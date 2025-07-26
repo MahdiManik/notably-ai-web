@@ -56,7 +56,9 @@ export function DashboardNav({ user }: DashboardNavProps) {
           <div className="flex items-center">
             <Link href="/articles" className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Notably AI</span>
+              <span className="text-xl font-bold text-gray-900">
+                Notably AI
+              </span>
             </Link>
           </div>
 

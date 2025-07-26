@@ -13,7 +13,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="space-y-1">
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor={inputId}
+            className="block text-sm font-medium text-gray-700"
+          >
             {label}
           </label>
         )}
@@ -22,8 +25,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           aria-invalid={!!error}
           aria-describedby={error ? `${inputId}-error` : undefined}
-          className={`flex h-10 w-full rounded-md border ${error ? 'border-red-500' : 'border-gray-300'
-            } bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 
+          className={`flex h-10 w-full rounded-md border ${
+            error ? 'border-red-500' : 'border-gray-300'
+          } bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 
           disabled:cursor-not-allowed disabled:opacity-50`}
           {...props}

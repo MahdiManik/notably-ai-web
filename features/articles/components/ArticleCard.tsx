@@ -22,7 +22,12 @@ interface ArticleCardProps {
   onSummarize: () => void
 }
 
-export function ArticleCard({ article, onEdit, onDelete, onSummarize }: ArticleCardProps) {
+export function ArticleCard({
+  article,
+  onEdit,
+  onDelete,
+  onSummarize,
+}: ArticleCardProps) {
   const [summarizing, setSummarizing] = useState(false)
 
   const handleSummarize = async () => {
@@ -82,7 +87,7 @@ export function ArticleCard({ article, onEdit, onDelete, onSummarize }: ArticleC
 
         {article.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {article.tags.slice(0, 4).map(tag => (
+            {article.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
                 className="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full border border-blue-200 hover:bg-blue-200 transition-colors"
@@ -102,7 +107,9 @@ export function ArticleCard({ article, onEdit, onDelete, onSummarize }: ArticleC
           <div className="bg-blue-50 border border-blue-200 rounded-md p-3 mb-4">
             <div className="flex items-center mb-1">
               <Sparkles className="h-4 w-4 text-blue-600 mr-1" />
-              <span className="text-sm font-medium text-blue-800">AI Summary</span>
+              <span className="text-sm font-medium text-blue-800">
+                AI Summary
+              </span>
             </div>
             <p className="text-sm text-blue-700 line-clamp-2">
               {article.summary}
@@ -115,7 +122,7 @@ export function ArticleCard({ article, onEdit, onDelete, onSummarize }: ArticleC
             <Calendar className="h-3 w-3 mr-1" />
             {formatDate(article.updatedAt)}
           </div>
-          
+
           <div className="flex space-x-2">
             <Link href={`/articles/${article.id}`}>
               <Button variant="ghost" size="sm" className="text-xs">
@@ -123,7 +130,7 @@ export function ArticleCard({ article, onEdit, onDelete, onSummarize }: ArticleC
                 View
               </Button>
             </Link>
-            
+
             {!article.summary && (
               <Button
                 variant="ghost"

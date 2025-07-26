@@ -1,2 +1,2 @@
-export const getCurrentUser = jest.fn();
-export const generateToken = jest.fn();
+export const getCurrentUser = jest.fn()
+export const generateToken = jest.fn()

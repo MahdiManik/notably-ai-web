@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { authSchema, hashPassword, verifyPassword, generateToken, setAuthCookie, clearAuthCookie } from '@/lib/auth'
+import {
+  authSchema,
+  hashPassword,
+  verifyPassword,
+  generateToken,
+  setAuthCookie,
+  clearAuthCookie,
+} from '@/lib/auth'
 import { z } from 'zod'
 
 const loginSchema = authSchema.omit({ name: true })
@@ -18,10 +25,7 @@ export async function POST(request: NextRequest) {
     } else if (action === 'logout') {
       return handleLogout()
     } else {
-      return NextResponse.json(
-        { error: 'Invalid action' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid action' }, { status: 400 })
     }
   } catch (error) {
     console.error('Auth API error:', error)
@@ -38,7 +42,7 @@ async function handleSignup(body: any) {
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email },
     })
 
     if (existingUser) {
@@ -61,7 +65,7 @@ async function handleSignup(body: any) {
         email: true,
         name: true,
         createdAt: true,
-      }
+      },
     })
 
     // Generate token and set cookie
@@ -89,7 +93,7 @@ async function handleLogin(body: any) {
 
     // Find user
     const user = await prisma.user.findUnique({
-      where: { email }
+      where: { email },
     })
 
     if (!user) {
@@ -119,7 +123,7 @@ async function handleLogin(body: any) {
         email: user.email,
         name: user.name,
         createdAt: user.createdAt,
-      }
+      },
     })
   } catch (error) {
     if (error instanceof z.ZodError) {

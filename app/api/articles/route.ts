@@ -16,17 +16,14 @@ export async function GET(request: NextRequest) {
   try {
     const user = await getCurrentUser()
     if (!user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const { searchParams } = new URL(request.url)
     const search = searchParams.get('search')
     const tags = searchParams.get('tags')?.split(',').filter(Boolean) || []
 
-    let whereClause: any = {
+    const whereClause: any = {
       userId: user.id,
     }
 
@@ -39,7 +36,7 @@ export async function GET(request: NextRequest) {
         OR: [
           { title: { contains: search, mode: 'insensitive' } },
           { body: { contains: search, mode: 'insensitive' } },
-        ]
+        ],
       })
     }
 
@@ -48,7 +45,7 @@ export async function GET(request: NextRequest) {
       filters.push({
         tags: {
           hasSome: tags,
-        }
+        },
       })
     }
 
@@ -68,7 +65,7 @@ export async function GET(request: NextRequest) {
         summary: true,
         createdAt: true,
         updatedAt: true,
-      }
+      },
     })
 
     return NextResponse.json({ articles })
@@ -85,10 +82,7 @@ export async function POST(request: NextRequest) {
   try {
     const user = await getCurrentUser()
     if (!user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const body = await request.json()
@@ -103,10 +97,7 @@ export async function POST(request: NextRequest) {
     } else if (action === 'summarize') {
       return handleSummarizeArticle(body, user.id)
     } else {
-      return NextResponse.json(
-        { error: 'Invalid action' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: 'Invalid action' }, { status: 400 })
     }
   } catch (error) {
     console.error('Articles POST error:', error)
@@ -136,7 +127,7 @@ async function handleCreateArticle(body: any, userId: string) {
         summary: true,
         createdAt: true,
         updatedAt: true,
-      }
+      },
     })
 
     return NextResponse.json({
@@ -161,14 +152,11 @@ async function handleUpdateArticle(body: any, userId: string) {
 
     // Check if article exists and belongs to user
     const existingArticle = await prisma.article.findFirst({
-      where: { id, userId }
+      where: { id, userId },
     })
 
     if (!existingArticle) {
-      return NextResponse.json(
-        { error: 'Article not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 })
     }
 
     const article = await prisma.article.update({
@@ -182,7 +170,7 @@ async function handleUpdateArticle(body: any, userId: string) {
         summary: true,
         createdAt: true,
         updatedAt: true,
-      }
+      },
     })
 
     return NextResponse.json({
@@ -206,18 +194,15 @@ async function handleDeleteArticle(body: any, userId: string) {
 
     // Check if article exists and belongs to user
     const existingArticle = await prisma.article.findFirst({
-      where: { id, userId }
+      where: { id, userId },
     })
 
     if (!existingArticle) {
-      return NextResponse.json(
-        { error: 'Article not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 })
     }
 
     await prisma.article.delete({
-      where: { id }
+      where: { id },
     })
 
     return NextResponse.json({
@@ -234,14 +219,11 @@ async function handleSummarizeArticle(body: any, userId: string) {
 
     // Check if article exists and belongs to user
     const article = await prisma.article.findFirst({
-      where: { id, userId }
+      where: { id, userId },
     })
 
     if (!article) {
-      return NextResponse.json(
-        { error: 'Article not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'Article not found' }, { status: 404 })
     }
 
     // Generate summary
@@ -262,7 +244,7 @@ async function handleSummarizeArticle(body: any, userId: string) {
         summary: true,
         createdAt: true,
         updatedAt: true,
-      }
+      },
     })
 
     return NextResponse.json({

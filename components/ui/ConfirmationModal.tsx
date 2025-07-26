@@ -89,8 +89,13 @@ export function ConfirmationModal({
             >
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <div className="flex items-start">
-                  <div className={`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${styles.iconBg} sm:mx-0 sm:h-10 sm:w-10`}>
-                    <AlertTriangle className={`h-6 w-6 ${styles.iconColor}`} aria-hidden="true" />
+                  <div
+                    className={`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${styles.iconBg} sm:mx-0 sm:h-10 sm:w-10`}
+                  >
+                    <AlertTriangle
+                      className={`h-6 w-6 ${styles.iconColor}`}
+                      aria-hidden="true"
+                    />
                   </div>
                   <div className="ml-4 mt-0 text-left">
                     <Dialog.Title
@@ -100,9 +105,7 @@ export function ConfirmationModal({
                       {title}
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        {message}
-                      </p>
+                      <p className="text-sm text-gray-500">{message}</p>
                     </div>
                   </div>
                   <button

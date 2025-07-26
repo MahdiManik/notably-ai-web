@@ -33,7 +33,7 @@ export default function ArticlesPage() {
 
   // Get all unique tags from articles
   const allTags = Array.from(
-    new Set(articles.flatMap(article => article.tags))
+    new Set(articles.flatMap((article) => article.tags))
   ).sort()
 
   const fetchArticles = async () => {
@@ -177,10 +177,8 @@ export default function ArticlesPage() {
   }
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag)
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     )
   }
 
@@ -218,7 +216,9 @@ export default function ArticlesPage() {
         {allTags.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-gray-700">Filter by tags:</p>
+              <p className="text-sm font-medium text-gray-700">
+                Filter by tags:
+              </p>
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
@@ -229,7 +229,7 @@ export default function ArticlesPage() {
               )}
             </div>
             <div className="flex flex-wrap gap-2">
-              {allTags.map(tag => (
+              {allTags.map((tag) => (
                 <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
@@ -251,16 +251,13 @@ export default function ArticlesPage() {
       {articles.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">No articles found.</p>
-          <Button
-            onClick={() => setIsCreateModalOpen(true)}
-            className="mt-4"
-          >
+          <Button onClick={() => setIsCreateModalOpen(true)} className="mt-4">
             Create your first article
           </Button>
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map(article => (
+          {articles.map((article) => (
             <ArticleCard
               key={article.id}
               article={article}

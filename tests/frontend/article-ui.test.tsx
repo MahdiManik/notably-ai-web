@@ -56,7 +56,7 @@
 //     render(<ArticleCard {...mockProps} />)
 
 //     const deleteButton = screen.getByTitle('Delete article')
-    
+
 //     await act(async () => {
 //       fireEvent.click(deleteButton)
 //       await Promise.resolve() // Allow any pending promises to resolve
@@ -76,17 +76,17 @@
 //   it('calls onSummarize when summarize button is clicked', async () => {
 //     const articleWithoutSummary = { ...mockArticle, summary: null }
 //     const mockOnSummarize = jest.fn().mockResolvedValue(undefined)
-    
+
 //     render(
-//       <ArticleCard 
-//         {...mockProps} 
-//         article={articleWithoutSummary} 
-//         onSummarize={mockOnSummarize} 
+//       <ArticleCard
+//         {...mockProps}
+//         article={articleWithoutSummary}
+//         onSummarize={mockOnSummarize}
 //       />
 //     )
 
 //     const summarizeButton = screen.getByText('Summarize')
-    
+
 //     await act(async () => {
 //       fireEvent.click(summarizeButton)
 //       await Promise.resolve() // Allow any pending promises to resolve
@@ -171,7 +171,7 @@
 //     render(<ArticleForm {...mockProps} />)
 
 //     const tagInput = screen.getByPlaceholderText('Add tags (press Enter or comma to add)...')
-    
+
 //     fireEvent.change(tagInput, { target: { value: 'newtag' } })
 //     fireEvent.keyDown(tagInput, { key: 'Enter' })
 
@@ -183,7 +183,7 @@
 //     render(<ArticleForm {...mockProps} />)
 
 //     const tagInput = screen.getByPlaceholderText('Add tags (press Enter or comma to add)...')
-    
+
 //     fireEvent.change(tagInput, { target: { value: 'anothertag' } })
 //     fireEvent.keyDown(tagInput, { key: ',' })
 
@@ -210,7 +210,7 @@
 //     render(<ArticleForm {...mockProps} initialData={mockArticle} />)
 
 //     const tagInput = screen.getByPlaceholderText('Add tags (press Enter or comma to add)...')
-    
+
 //     // Try to add existing tag
 //     fireEvent.change(tagInput, { target: { value: 'test' } })
 //     fireEvent.keyDown(tagInput, { key: 'Enter' })
@@ -225,9 +225,9 @@
 //     render(<ArticleForm {...mockProps} />)
 
 //     const submitButton = screen.getByRole('button', { name: /create article/i })
-    
+
 //     fireEvent.click(submitButton)
-    
+
 //     // Wait for validation errors to appear
 //     await waitFor(() => {
 //       // Check for the error messages in the document

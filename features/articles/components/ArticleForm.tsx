@@ -22,16 +22,20 @@ interface ArticleFormProps {
   onCancel: () => void
 }
 
-export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProps) {
+export function ArticleForm({
+  initialData,
+  onSubmit,
+  onCancel,
+}: ArticleFormProps) {
   const [title, setTitle] = useState(initialData?.title || '')
   const [body, setBody] = useState(initialData?.body || '')
   const [tags, setTags] = useState<string[]>(initialData?.tags || [])
   const [tagInput, setTagInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<{
-    title?: string;
-    body?: string;
-    form?: string;
+    title?: string
+    body?: string
+    form?: string
   }>({})
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,13 +61,16 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
         tags,
       })
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('Form submission error:', error)
       setErrors({
         ...errors,
-        form: error instanceof Error ? error.message : 'An unexpected error occurred while saving the article'
-      });
+        form:
+          error instanceof Error
+            ? error.message
+            : 'An unexpected error occurred while saving the article',
+      })
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -79,7 +86,7 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
   }
 
   const removeTag = (tagToRemove: string) => {
-    setTags(tags.filter(tag => tag !== tagToRemove))
+    setTags(tags.filter((tag) => tag !== tagToRemove))
   }
 
   return (
@@ -97,7 +104,6 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
         <p className="text-red-500 text-sm mt-1">{errors.title}</p>
       )}
 
-
       <Textarea
         label="Content"
         value={body}
@@ -111,11 +117,8 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
         <p className="text-red-500 text-sm mt-1">{errors.body}</p>
       )}
 
-
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
-          Tags
-        </label>
+        <label className="block text-sm font-medium text-gray-700">Tags</label>
         <Input
           type="text"
           value={tagInput}
@@ -127,7 +130,7 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
 
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
-            {tags.map(tag => (
+            {tags.map((tag) => (
               <span
                 key={tag}
                 className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border border-blue-200"
@@ -154,11 +157,7 @@ export function ArticleForm({ initialData, onSubmit, onCancel }: ArticleFormProp
           </div>
         )}
         <div className="flex justify-end space-x-4">
-          <Button
-            type="button"
-            onClick={onCancel}
-            disabled={loading}
-          >
+          <Button type="button" onClick={onCancel} disabled={loading}>
             Cancel
           </Button>
           <Button type="submit" disabled={loading}>

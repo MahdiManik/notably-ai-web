@@ -10,29 +10,34 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 ## 🚀 Features
 
 ### 🔐 Authentication
+
 - **Secure Login/Signup**: Email and password authentication with JWT tokens
 - **Session Management**: HttpOnly cookies for secure token storage
 - **Protected Routes**: Automatic redirection for authenticated/unauthenticated users
 
 ### 📝 Article Management
+
 - **Full CRUD Operations**: Create, read, update, and delete articles
 - **Rich Content**: Support for long-form content with markdown-style formatting
 - **Tag System**: Organize articles with custom tags
 - **User Ownership**: Users can only access their own articles
 
 ### 🔍 Search & Discovery
+
 - **Keyword Search**: Search across article titles and content
 - **Tag Filtering**: Filter articles by one or multiple tags
 - **Real-time Results**: Instant search results as you type
 - **Combined Filters**: Use search and tags together for precise results
 
 ### 🤖 AI-Powered Summarization
+
 - **OpenAI Integration**: Generate intelligent summaries using GPT-3.5-turbo
 - **Mock Fallback**: Graceful fallback when OpenAI API is unavailable
 - **One-Click Summaries**: Generate summaries with a single button click
 - **Persistent Storage**: Summaries are saved and displayed with articles
 
 ### 🎨 Modern UI/UX
+
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - **Clean Interface**: Minimalist design focused on content
 - **Interactive Elements**: Smooth animations and transitions
@@ -42,6 +47,7 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Next.js 14+** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **TailwindCSS** - Utility-first CSS framework
@@ -49,6 +55,7 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 - **React Hot Toast** - Beautiful notifications
 
 ### Backend
+
 - **Next.js API Routes** - Serverless API endpoints
 - **Prisma ORM** - Type-safe database operations
 - **PostgreSQL** - Robust relational database
@@ -56,10 +63,12 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 - **bcryptjs** - Password hashing
 
 ### AI & External Services
+
 - **OpenAI API** - GPT-3.5-turbo for summarization
 - **Zod** - Runtime type validation
 
 ### Development & Testing
+
 - **Jest** - JavaScript testing framework
 - **React Testing Library** - Component testing
 - **ESLint** - Code linting
@@ -67,6 +76,7 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 - **Husky** - Git hooks
 
 ### Deployment & DevOps
+
 - **Vercel** - Hosting and deployment
 - **Docker** - Containerization
 - **GitHub Actions** - CI/CD pipeline
@@ -74,28 +84,34 @@ A full-stack AI-powered knowledge base application built with Next.js 14, TypeSc
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - PostgreSQL 15+
 - npm or yarn
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/notably-ai.git
 cd notably-ai
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Environment Setup
+
 Copy the environment example and fill in your values:
+
 ```bash
 cp .env.example .env
 ```
 
 Edit `.env` with your configuration:
+
 ```env
 DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/notably
 JWT_SECRET=r9trtQDXr1MeT4JZvPbQLw==
@@ -103,6 +119,7 @@ OPENAI_API_KEY=your-openai-key  # Optional
 ```
 
 ### 4. Database Setup
+
 ```bash
 # Generate Prisma client
 npx prisma generate
@@ -115,6 +132,7 @@ npx prisma studio
 ```
 
 ### 5. Run Development Server
+
 ```bash
 npm run dev
 ```
@@ -171,6 +189,7 @@ notably-ai/
 ## 🧪 Testing
 
 Run the test suite:
+
 ```bash
 # Run all tests
 npm test
@@ -185,12 +204,14 @@ npm test -- --coverage
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 1. Push your code to GitHub
 2. Connect your repository to Vercel
 3. Set environment variables in Vercel dashboard
 4. Deploy automatically on push to main branch
 
 ### Docker
+
 ```bash
 # Build the image
 docker build -t notably-ai .
@@ -200,6 +221,7 @@ docker run -p 3000:3000 notably-ai
 ```
 
 ### Manual Deployment
+
 ```bash
 # Build the application
 npm run build
@@ -211,12 +233,15 @@ npm start
 ## 🔧 Configuration
 
 ### Environment Variables
+
 - `DATABASE_URL`: PostgreSQL connection string
 - `JWT_SECRET`: Secret key for JWT token signing
 - `OPENAI_API_KEY`: OpenAI API key (optional, falls back to mock)
 
 ### Database Configuration
+
 The application uses PostgreSQL with Prisma ORM. The schema includes:
+
 - **Users**: Authentication and user management
 - **Articles**: Content storage with tags and summaries
 
@@ -229,6 +254,7 @@ The application uses PostgreSQL with Prisma ORM. The schema includes:
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow TypeScript best practices
 - Write tests for new features
 - Use conventional commit messages
@@ -237,9 +263,11 @@ The application uses PostgreSQL with Prisma ORM. The schema includes:
 ## 📝 API Documentation
 
 ### Authentication Endpoints
+
 - `POST /api/auth` - Login, signup, logout
 
 ### Article Endpoints
+
 - `GET /api/articles` - List user articles (with search/filter)
 - `POST /api/articles` - Create, update, delete, summarize articles
 
@@ -263,6 +291,7 @@ The application uses PostgreSQL with Prisma ORM. The schema includes:
 ### Common Issues
 
 **Database Connection Error**
+
 ```bash
 # Check PostgreSQL is running
 pg_isready
@@ -272,11 +301,13 @@ echo $DATABASE_URL
 ```
 
 **OpenAI API Issues**
+
 - Verify API key is correct
 - Check API usage limits
 - Application will fallback to mock summaries
 
 **Build Errors**
+
 ```bash
 # Clear Next.js cache
 rm -rf .next
@@ -301,6 +332,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help:
+
 - Open an issue on GitHub
 - Check the documentation
 - Review the test files for usage examples
